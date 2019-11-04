@@ -48,4 +48,4 @@ assign       six_digit_seg = {seg_left, seg_right, seg_left, seg_right , seg_lef
 
 ### **FPGA 동작 사진 (3개- 일반, Q1, Q2)**
 
-`Please fill up your source`
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice06/figs/1%EB%B2%88%EC%A7%B8%20%ED%80%B4%EC%A6%88.jpg)
