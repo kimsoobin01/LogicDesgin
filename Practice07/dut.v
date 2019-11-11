@@ -305,7 +305,7 @@ debounce	u2_debounce(
 			.clk			( clk_100hz	));
 
 reg		o_mode				;
-always @(posedge i_sw0 or negedge rst_n) begin
+always @(posedge sw0 or negedge rst_n) begin
 	if(rst_n == 1'b0) begin
 		o_mode <= MODE_CLOCK;
 	end else begin
@@ -314,7 +314,7 @@ always @(posedge i_sw0 or negedge rst_n) begin
 end
 
 reg		o_position			;
-always @(posedge i_sw1 or negedge rst_n) begin
+always @(posedge sw1 or negedge rst_n) begin
 	if(rst_n == 1'b0) begin
 		o_position <= POS_SEC;
 	end else begin
@@ -340,12 +340,12 @@ always @(*) begin
 		MODE_SETUP : begin
 			case(o_position)
 				POS_SEC : begin
-					o_sec_clk = ~i_sw2;
+					o_sec_clk = ~sw2;
 					o_min_clk = 1'b0;
 				end
 				POS_MIN : begin
 					o_sec_clk = 1'b0;
-					o_min_clk = ~i_sw2;
+					o_min_clk = ~sw2;
 				end
 			endcase
 		end
@@ -418,78 +418,77 @@ wire			max_hit_min	;
 wire			min_clk		;
 wire			sec_clk		;
 controller		u_cont(
-						.i_sw0			(i_sw0		),
-						.i_sw1			(i_sw1		),
-						.i_sw2			(i_sw2		),
-						.clk			(clk		),
-						.rst_n			(rst_n		),
+						.i_sw0			(i_sw0),
+						.i_sw1			(i_sw1),
+						.i_sw2			(i_sw2),
+						.clk			(clk),
+						.rst_n			(rst_n),
 						.i_max_hit_sec	(max_hit_sec),		
 						.i_max_hit_min	(max_hit_min),
-						.o_min_clk		(min_clk	),
-						.o_sec_clk		(sec_clk	),
-						.o_mode			(			),
-						.o_position		(			));
+						.o_min_clk		(min_clk),
+						.o_sec_clk		(sec_clk),
+						.o_mode			(),
+						.o_position		());
 
 wire		[5:0]		sec	;
 wire		[5:0]		min	;
 minsec			u_mins(
-						.i_min_clk		(min_clk	),
-						.i_sec_clk		(sec_clk	),
-						.rst_n			(rst_n		),
-						.clk			(clk		),
+						.i_min_clk		(min_clk),
+						.i_sec_clk		(sec_clk),
+						.rst_n			(rst_n),
+						.clk			(clk),
 						.o_max_hit_min	(max_hit_min),
 						.o_max_hit_sec	(max_hit_sec),
-						.o_min			(min		),
-						.o_sec			(sec		));
+						.o_min			(min),
+						.o_sec			(sec));
 
-wire		[3:0]	left	;
-wire		[3:0]	right	;
+wire	[3:0]	left		;
+wire	[3:0]	right		;
 double_fig_sep	u_double01(
-						.o_left			(left		),
-						.o_right		(right		),
-						.i_double_fig	(sec		));
+								.o_left				(left		),
+								.o_right			(right		),
+								.i_double_fig		(sec		));
 
 wire	[6:0]	seg_left	;
 fnd_dec			u_fnd_left01(
-						.o_seg			(seg_left	),
-						.i_num			(left		));
+								.o_seg				(seg_left		),
+								.i_num				(left			));
 
 
 wire	[6:0]	seg_right	;
 fnd_dec			u_fnd_right01(
-						.o_seg			(seg_right	),
-						.i_num			(right		));
+								.o_seg				(seg_right		),
+								.i_num				(right			));
 
 wire	[3:0]	left1		;
 wire	[3:0]	right1		;
 double_fig_sep	u_double02(
-						.o_left			(left1		),
-						.o_right		(right1		),
-						.i_double_fig	(min		));
+								.o_left				(left1		),
+								.o_right			(right1		),
+								.i_double_fig		(min		));
 
 wire	[6:0]	seg_left1	;
 fnd_dec			u_fnd_left02(
-						.o_seg			(seg_left1	),
-						.i_num			(left1		));
+								.o_seg				(seg_left1		),
+								.i_num				(left1			));
 
 
 wire	[6:0]	seg_right1	;
 fnd_dec			u_fnd_right02(
-						.o_seg			(seg_right1	),
-						.i_num			(right1		));
+								.o_seg				(seg_right1		),
+								.i_num				(right1			));
 
 
 wire [41:0] six_digit_seg	;
 assign six_digit_seg = { seg_left1, seg_right1, seg_left, seg_right };
 led_disp		u_led(
-						.o_seg			(o_seg			),
-						.o_seg_dp		(o_seg_dp		),
-						.o_seg_enb		(o_seg_enb		),
-						.i_six_digit_seg(six_digit_seg	),
-						.i_six_dp		(6'h0			),	
-						.clk			(clk			),
-						.rst_n			(rst_n			));
+						.o_seg				(o_seg			),
+						.o_seg_dp			(o_seg_dp		),
+						.o_seg_enb			(o_seg_enb		),
+						.i_six_digit_seg	(six_digit_seg	),
+						.i_six_dp			(6'h0			),	
+						.clk					(clk),
+						.rst_n				(rst_n));
 
 
 endmodule
-
