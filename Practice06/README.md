@@ -28,7 +28,7 @@ assign       six_digit_seg = { 4{7'b0000000}, seg_left, seg_right };
 
 ```verilog 
 wire  [41:0] six_digit_seg; 
-assign       six_digit_seg = { 4{7'b1110111}, seg_left, seg_right }
+assign       six_digit_seg = { 4{7'b1110111}, seg_left, seg_right };
 ```
 
 > Q2 - 고정 LED 없이 2개의 LED 단위로 1초 Counter 값 표시 
@@ -43,9 +43,10 @@ assign       six_digit_seg = {seg_left, seg_right, seg_left, seg_right , seg_lef
 ## 결과 
 
 ### **Top Module 의 DUT/TestBench Code 및 Waveform 검증**
-
-`Please fill up your source`
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice06/figs/segment!.PNG)
 
 ### **FPGA 동작 사진 (3개- 일반, Q1, Q2)**
 
-`Please fill up your source`
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice06/figs/%EC%A0%81%EC%A0%88%ED%95%9C%20%EC%88%AB%EC%9E%90%EB%A1%9C%20%EC%8B%9C%EA%B0%84%20%EB%A7%9E%EC%B6%94%EA%B8%B0.jpg)
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice06/figs/1%EB%B2%88%EC%A7%B8%20%ED%80%B4%EC%A6%88.jpg)
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice06/figs/2%EB%B2%88%EC%A7%B8%20%ED%80%B4%EC%A6%88.jpg)
