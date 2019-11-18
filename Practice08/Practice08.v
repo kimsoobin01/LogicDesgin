@@ -620,23 +620,23 @@ module	top(
 		clk,
 		rst_n);
 
-output	[5:0]	o_seg_enb		;
+output	[5:0]		o_seg_enb		;
 output			o_seg_dp		;
-output	[6:0]	o_seg			;
+output	[6:0]		o_seg			;
 output			o_alarm			;
 
 input			i_sw0			;
 input			i_sw1			;
 input			i_sw2			;
 input			i_sw3			;
-input			clk				;
+input			clk			;
 input			rst_n			;
 
 wire			max_hit_sec		;
 wire			max_hit_min		;	
-wire			alarm_sec_clk	;
-wire			alarm_min_clk	;
-wire 	[1:0]	mode			;
+wire			alarm_sec_clk		;
+wire			alarm_min_clk		;
+wire 	[1:0]		mode			;
 wire			min_clk			;
 wire			sec_clk			;
 wire			position		;
@@ -648,10 +648,10 @@ controller		u_cont(
 					.o_alarm_en			(alarm_en		),
 					.o_sec_clk			(sec_clk		),
 					.o_min_clk			(min_clk		),
-					.o_alarm_sec_clk	(alarm_sec_clk	),
-					.o_alarm_min_clk	(alarm_min_clk	),
-					.i_max_hit_sec		(max_hit_sec	),
-					.i_max_hit_min		(max_hit_min	),
+					.o_alarm_sec_clk		(alarm_sec_clk		),
+					.o_alarm_min_clk		(alarm_min_clk		),
+					.i_max_hit_sec			(max_hit_sec		),
+					.i_max_hit_min			(max_hit_min		),
 					.i_sw0				(i_sw0			),
 					.i_sw1				(i_sw1			),	
 					.i_sw2				(i_sw2			),
@@ -666,15 +666,15 @@ wire			alarm	;
 minsec			u_min(	
 					.o_sec				(sec			),
 					.o_min				(min			),
-					.o_max_hit_sec		(max_hit_sec	),
-					.o_max_hit_min		(max_hit_min	),
+					.o_max_hit_sec			(max_hit_sec	),
+					.o_max_hit_min			(max_hit_min	),
 					.o_alarm			(alarm			),
 					.i_mode				(mode			),
 					.i_position			(position		),
 					.i_sec_clk			(sec_clk		),
 					.i_min_clk			(min_clk		),
-					.i_alarm_sec_clk	(alarm_sec_clk	),
-					.i_alarm_min_clk	(alarm_min_clk	),
+					.i_alarm_sec_clk		(alarm_sec_clk	),
+					.i_alarm_min_clk		(alarm_min_clk	),
 					.i_alarm_en			(alarm_en		),
 					.clk				(clk			),
 					.rst_n				(rst_n			));
@@ -685,14 +685,14 @@ wire	[3:0]	right1	;
 double_fig_sep	u_double01(
 					.o_left				(left1			),
 					.o_right			(right1			),
-					.i_double_fig		(min			));
+					.i_double_fig			(min			));
 
 wire	[3:0]	left2	;
 wire	[3:0]	right2	;
 double_fig_sep	u_double02(
 					.o_left				(left2			),
 					.o_right			(right2			),
-					.i_double_fig		(sec			));
+					.i_double_fig			(sec			));
 	
 wire	[6:0]	seg_left1		;
 fnd_dec			u_fnd01(
@@ -720,7 +720,7 @@ led_disp		u_led(
 					.o_seg				(o_seg			),
 					.o_seg_dp			(o_seg_dp		),
 					.o_seg_enb			(o_seg_enb		),
-					.i_six_digit_seg	(six_digit_seg	),
+					.i_six_digit_seg		(six_digit_seg		),
 					.i_six_dp			(mode			),
 					.clk				(clk			),
 					.rst_n				(rst_n			));
