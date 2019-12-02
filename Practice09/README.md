@@ -65,7 +65,7 @@ end`
 ### **Top Module 의 DUT/TestBench Code 및 Waveform 검증**
 ![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice09/figs/wave.jpg)
 ### **FPGA 동작 사진 **
-`Please fill up your source`
+![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice09/figs/fpga.jpg)
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbMTQyNTAzODU5MywyMDc4NDAwMjg3XX0=
 -->
