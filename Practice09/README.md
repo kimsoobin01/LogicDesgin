@@ -64,8 +64,11 @@ end`
 ## 결과 
 ### **Top Module 의 DUT/TestBench Code 및 Waveform 검증**
 ![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice09/figs/wave.jpg)
+
+#### **각 leader code, custom code, data dode로 나눠진다. 0bit, 1bit, data code 구분이 가능하다.**
 ### **FPGA 동작 사진 **
 ![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice09/figs/fpga.jpg)
+#### **IR 리모컨을 눌렀을 때 전달되는 24비트 데이터, (5를 눌렀을 때)**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1Mzg2MzQ4LDIwNzg0MDAyODddfQ==
+eyJoaXN0b3J5IjpbMTQyNTAzODU5MywyMDc4NDAwMjg3XX0=
 -->
