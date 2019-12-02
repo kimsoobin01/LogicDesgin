@@ -67,5 +67,5 @@ end`
 ### **FPGA 동작 사진 **
 ![](https://github.com/kimsoobin01/LogicDesgin/blob/master/Practice09/figs/fpga.jpg)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNTAzODU5MywyMDc4NDAwMjg3XX0=
+eyJoaXN0b3J5IjpbMTI1Mzg2MzQ4LDIwNzg0MDAyODddfQ==
 -->
