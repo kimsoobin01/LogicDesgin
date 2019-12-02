@@ -28,13 +28,13 @@
 ### **이후 case 문으로 각 state를 정의해 줌**
  ` wire ir_rx ;
 assign ir_rx = ~i_ir_rxb;
-   reg [1:0] seq_rx ;
-   always @(posedge clk_1M or negedge rst_n) begin
-if(rst_n == 1'b0) begin
-seq_rx <= 2'b00;
-end else begin
-seq_rx <= {seq_rx[0], ir_rx};
-end
+reg [1:0] seq_rx ;
+always @(posedge clk_1M or negedge rst_n) begin
+	if(rst_n == 1'b0) begin 
+		seq_rx <= 2'b00;
+	end else begin
+		seq_rx <= {seq_rx[0], ir_rx};
+	end
 end  `
 
 ### **-> 리모콘으로부터 오는 신호**
@@ -42,19 +42,19 @@ end  `
 `reg [15:0] cnt_h ;
 reg [15:0] cnt_l ;
 always @(posedge clk_1M or negedge rst_n) begin
-if(rst_n == 1'b0) begin
-cnt_h <= 16'd0;
-cnt_l <= 16'd0;
-end else begin
-case(seq_rx)
-2'b00 : cnt_l <= cnt_l + 1;
-2'b01 : begin
-cnt_l <= 16'd0;
-cnt_h <= 16'd0;
-end
-2'b11 : cnt_h <= cnt_h + 1;
-endcase
-end
+	if(rst_n == 1'b0) begin
+		cnt_h <= 16'd0;
+		cnt_l <= 16'd0;
+	end else begin
+		case(seq_rx)
+			2'b00 : cnt_l <= cnt_l + 1;
+			2'b01 : begin
+				cnt_l <= 16'd0;
+				cnt_h <= 16'd0;
+			end
+			2'b11 : cnt_h <= cnt_h + 1;
+		endcase
+	end
 end`
 
 **2'b00에선 1씩 증가, 아닌 경우 high**
